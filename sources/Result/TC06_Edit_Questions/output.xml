@@ -1,0 +1,1927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.0 on win32)" generated="20220901 00:50:00.189" rpa="false" schemaversion="3">
+<suite id="s1" name="TC06 Edit Questions" source="C:\Users\Acer\Documents\Miniproject_test\Project\Teedin\TestCases\TC06_Edit_Questions.robot">
+<test id="s1-t1" name="TC06_Edit_Questions" line="10">
+<kw name="Customer Login">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${Login URl}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220901 00:50:02.307" level="INFO">Opening browser 'chrome' to base url 'http://localhost:8086/TeeDin/login'.</msg>
+<status status="PASS" starttime="20220901 00:50:02.306" endtime="20220901 00:50:04.580"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220901 00:50:04.580" endtime="20220901 00:50:04.718"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${user_locate}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220901 00:50:04.719" endtime="20220901 00:50:04.773"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${user_locate}</arg>
+<arg>khun123</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:04.775" level="INFO">Typing text 'khun123' into text field '//input[@id='user']'.</msg>
+<status status="PASS" starttime="20220901 00:50:04.774" endtime="20220901 00:50:04.914"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>${pass_locate}</arg>
+<arg>123456</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:04.915" level="INFO">Typing password into text field '//input[@id='pass']'.</msg>
+<msg timestamp="20220901 00:50:04.968" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20220901 00:50:05.020" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220901 00:50:04.914" endtime="20220901 00:50:05.021"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<arg>30s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220901 00:50:05.021" endtime="20220901 00:50:05.052"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${btn_login}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:05.053" level="INFO">Clicking button '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:50:05.053" endtime="20220901 00:50:07.850"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:50:08.851" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220901 00:50:07.850" endtime="20220901 00:50:08.851"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:50:08.851" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:50:08.851" endtime="20220901 00:50:09.335"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:02.305" endtime="20220901 00:50:09.336"/>
+</kw>
+<kw name="Open Excel Document" library="ExcelLibrary">
+<arg>TestData//TC06_Edit_Questions.xlsx</arg>
+<arg>doc_id=TestData</arg>
+<doc>Opens xlsx document file.</doc>
+<status status="PASS" starttime="20220901 00:50:09.337" endtime="20220901 00:50:09.361"/>
+</kw>
+<kw name="Get Sheet" library="ExcelLibrary">
+<var>${eclin}</var>
+<arg>TestData</arg>
+<doc>Returns a page from the current document.</doc>
+<msg timestamp="20220901 00:50:09.363" level="INFO">${eclin} = &lt;Worksheet "TestData"&gt;</msg>
+<status status="PASS" starttime="20220901 00:50:09.362" endtime="20220901 00:50:09.363"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>2</value>
+<value>${eclin.max_row+1}</value>
+<iter>
+<var name="${i}">2</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:09.373" level="INFO">${TopQuestion} = ขอยื่นรังวัดทำอย่างไร?</msg>
+<status status="PASS" starttime="20220901 00:50:09.368" endtime="20220901 00:50:09.373"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:09.376" level="INFO">${DetailQuestion} = จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง </msg>
+<status status="PASS" starttime="20220901 00:50:09.374" endtime="20220901 00:50:09.377"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" starttime="20220901 00:50:09.377" endtime="20220901 00:50:09.377"/>
+</kw>
+<status status="NOT RUN" starttime="20220901 00:50:09.377" endtime="20220901 00:50:09.378"/>
+</branch>
+<status status="PASS" starttime="20220901 00:50:09.377" endtime="20220901 00:50:09.378"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:09.379" level="INFO">Typing text 'ขอยื่นรังวัดทำอย่างไร?' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:50:09.379" endtime="20220901 00:50:09.751"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:09.752" level="INFO">Typing text 'จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง ' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:50:09.752" endtime="20220901 00:50:10.262"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:10.264" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:50:10.262" endtime="20220901 00:50:11.324"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:50:16.330" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:50:11.324" endtime="20220901 00:50:16.331"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:09.378" endtime="20220901 00:50:16.331"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:50:16.341" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<status status="PASS" starttime="20220901 00:50:16.340" endtime="20220901 00:50:16.351"/>
+</kw>
+<msg timestamp="20220901 00:50:16.351" level="INFO">${get_message} = ('PASS', 'แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว')</msg>
+<status status="PASS" starttime="20220901 00:50:16.339" endtime="20220901 00:50:16.352"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:50:16.353" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:50:16.355" level="FAIL">แก้ไขคำถามสำเร็จ != ('PASS', 'แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว')</msg>
+<status status="FAIL" starttime="20220901 00:50:16.353" endtime="20220901 00:50:16.356"/>
+</kw>
+<msg timestamp="20220901 00:50:16.356" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:50:16.352" endtime="20220901 00:50:16.356"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:16.335" endtime="20220901 00:50:16.357"/>
+</kw>
+<msg timestamp="20220901 00:50:16.358" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:50:16.358" level="INFO">${message_1} = แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว</msg>
+<status status="PASS" starttime="20220901 00:50:16.332" endtime="20220901 00:50:16.358"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:50:16.358" endtime="20220901 00:50:16.360"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:50:16.360" endtime="20220901 00:50:16.363"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:16.368" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:50:16.364" endtime="20220901 00:50:16.368"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:16.370" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:50:16.368" endtime="20220901 00:50:16.370"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:16.375" level="INFO">${message} = แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว</msg>
+<status status="PASS" starttime="20220901 00:50:16.371" endtime="20220901 00:50:16.375"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:16.377" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:50:16.376" endtime="20220901 00:50:16.377"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:16.381" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "แก้ไขคำถามสำเร็จ"</msg>
+<status status="PASS" starttime="20220901 00:50:16.377" endtime="20220901 00:50:16.381"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:16.381" endtime="20220901 00:50:16.384"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:16.384" endtime="20220901 00:50:16.386"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:16.387" endtime="20220901 00:50:16.388"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:16.389" endtime="20220901 00:50:16.393"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:09.367" endtime="20220901 00:50:16.394"/>
+</iter>
+<iter>
+<var name="${i}">3</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:16.405" level="INFO">${TopQuestion} = 참조*@#&amp;</msg>
+<status status="PASS" starttime="20220901 00:50:16.395" endtime="20220901 00:50:16.405"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:16.412" level="INFO">${DetailQuestion} = จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง </msg>
+<status status="PASS" starttime="20220901 00:50:16.406" endtime="20220901 00:50:16.412"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:50:16.415" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:50:16.414" endtime="20220901 00:50:16.972"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:16.413" endtime="20220901 00:50:16.972"/>
+</branch>
+<status status="PASS" starttime="20220901 00:50:16.413" endtime="20220901 00:50:16.972"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:16.978" level="INFO">Typing text '참조*@#&amp;' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:50:16.976" endtime="20220901 00:50:17.194"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:17.196" level="INFO">Typing text 'จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง ' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:50:17.195" endtime="20220901 00:50:17.650"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:17.651" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:50:17.651" endtime="20220901 00:50:17.733"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:50:22.736" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:50:17.733" endtime="20220901 00:50:22.736"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:16.973" endtime="20220901 00:50:22.736"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:50:22.741" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<msg timestamp="20220901 00:50:33.170" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220901 00:50:33.170" level="FAIL">Alert not found in 10 seconds.</msg>
+<status status="FAIL" starttime="20220901 00:50:22.741" endtime="20220901 00:50:33.204"/>
+</kw>
+<msg timestamp="20220901 00:50:33.205" level="INFO">${get_message} = ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="PASS" starttime="20220901 00:50:22.741" endtime="20220901 00:50:33.205"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:50:33.206" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:50:33.207" level="FAIL">กรุณากรอกหัวข้อคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข เท่านั้น != ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="FAIL" starttime="20220901 00:50:33.205" endtime="20220901 00:50:33.207"/>
+</kw>
+<msg timestamp="20220901 00:50:33.207" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:50:33.205" endtime="20220901 00:50:33.207"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:22.738" endtime="20220901 00:50:33.207"/>
+</kw>
+<msg timestamp="20220901 00:50:33.208" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:50:33.208" level="INFO">${message_1} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:50:22.737" endtime="20220901 00:50:33.208"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:50:33.208" endtime="20220901 00:50:33.209"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:50:33.209" endtime="20220901 00:50:33.210"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:33.212" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:50:33.210" endtime="20220901 00:50:33.212"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:33.212" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:50:33.212" endtime="20220901 00:50:33.212"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:33.213" level="INFO">${message} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:50:33.212" endtime="20220901 00:50:33.213"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:33.215" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:50:33.214" endtime="20220901 00:50:33.215"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:33.217" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "กรุณากรอกหัวข้อคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข เท่านั้น"</msg>
+<status status="PASS" starttime="20220901 00:50:33.215" endtime="20220901 00:50:33.217"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:33.217" endtime="20220901 00:50:33.218"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:33.218" endtime="20220901 00:50:33.218"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:33.218" endtime="20220901 00:50:33.219"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:33.219" endtime="20220901 00:50:33.219"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:16.394" endtime="20220901 00:50:33.220"/>
+</iter>
+<iter>
+<var name="${i}">4</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:33.222" level="INFO">${TopQuestion} = ขอยื่นรัง</msg>
+<status status="PASS" starttime="20220901 00:50:33.220" endtime="20220901 00:50:33.222"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:33.224" level="INFO">${DetailQuestion} = จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง </msg>
+<status status="PASS" starttime="20220901 00:50:33.222" endtime="20220901 00:50:33.224"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:50:33.227" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:50:33.226" endtime="20220901 00:50:33.626"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:33.225" endtime="20220901 00:50:33.627"/>
+</branch>
+<status status="PASS" starttime="20220901 00:50:33.225" endtime="20220901 00:50:33.627"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:33.637" level="INFO">Typing text 'ขอยื่นรัง' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:50:33.633" endtime="20220901 00:50:33.887"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:33.889" level="INFO">Typing text 'จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง ' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:50:33.888" endtime="20220901 00:50:34.452"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:34.453" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:50:34.453" endtime="20220901 00:50:34.597"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:50:39.612" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:50:34.597" endtime="20220901 00:50:39.612"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:33.627" endtime="20220901 00:50:39.612"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:50:39.616" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<msg timestamp="20220901 00:50:50.032" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220901 00:50:50.032" level="FAIL">Alert not found in 10 seconds.</msg>
+<status status="FAIL" starttime="20220901 00:50:39.615" endtime="20220901 00:50:50.033"/>
+</kw>
+<msg timestamp="20220901 00:50:50.033" level="INFO">${get_message} = ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="PASS" starttime="20220901 00:50:39.615" endtime="20220901 00:50:50.033"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:50:50.035" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:50:50.036" level="FAIL">กรุณากรอกหัวข้อคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข ที่มีความยาว 10-500 ตัวอักษร != ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="FAIL" starttime="20220901 00:50:50.034" endtime="20220901 00:50:50.036"/>
+</kw>
+<msg timestamp="20220901 00:50:50.036" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:50:50.034" endtime="20220901 00:50:50.036"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:39.614" endtime="20220901 00:50:50.036"/>
+</kw>
+<msg timestamp="20220901 00:50:50.036" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:50:50.036" level="INFO">${message_1} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:50:39.612" endtime="20220901 00:50:50.036"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:50:50.036" endtime="20220901 00:50:50.037"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:50:50.037" endtime="20220901 00:50:50.038"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:50.040" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:50:50.038" endtime="20220901 00:50:50.040"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:50.040" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:50:50.040" endtime="20220901 00:50:50.040"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:50.042" level="INFO">${message} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:50:50.041" endtime="20220901 00:50:50.042"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:50.042" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:50:50.042" endtime="20220901 00:50:50.042"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:50.043" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "กรุณากรอกหัวข้อคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข ที่มีความยาว 10-500 ตัวอักษร"</msg>
+<status status="PASS" starttime="20220901 00:50:50.042" endtime="20220901 00:50:50.043"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:50.043" endtime="20220901 00:50:50.044"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:50.044" endtime="20220901 00:50:50.045"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:50.045" endtime="20220901 00:50:50.046"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:50:50.046" endtime="20220901 00:50:50.046"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:33.220" endtime="20220901 00:50:50.046"/>
+</iter>
+<iter>
+<var name="${i}">5</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:50.048" level="INFO">${TopQuestion} = เจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที...</msg>
+<status status="PASS" starttime="20220901 00:50:50.047" endtime="20220901 00:50:50.048"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:50:50.049" level="INFO">${DetailQuestion} = จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง </msg>
+<status status="PASS" starttime="20220901 00:50:50.048" endtime="20220901 00:50:50.049"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:50:50.050" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:50:50.050" endtime="20220901 00:50:50.388"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:50.050" endtime="20220901 00:50:50.389"/>
+</branch>
+<status status="PASS" starttime="20220901 00:50:50.049" endtime="20220901 00:50:50.389"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:50.392" level="INFO">Typing text 'เจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่ดินเจ้าของที่ดินควรทราบอะไรบ้าง ก่อนที่จะทำการรังวัดที่' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:50:50.391" endtime="20220901 00:50:56.506"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:56.507" level="INFO">Typing text 'จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง ' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:50:56.506" endtime="20220901 00:50:57.062"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:50:57.064" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:50:57.062" endtime="20220901 00:50:58.135"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:51:03.151" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:50:58.135" endtime="20220901 00:51:03.151"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:50.389" endtime="20220901 00:51:03.151"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:51:03.155" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<status status="PASS" starttime="20220901 00:51:03.154" endtime="20220901 00:51:03.159"/>
+</kw>
+<msg timestamp="20220901 00:51:03.160" level="INFO">${get_message} = ('PASS', 'แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว')</msg>
+<status status="PASS" starttime="20220901 00:51:03.154" endtime="20220901 00:51:03.160"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:51:03.162" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:51:03.163" level="FAIL">กรุณากรอกหัวข้อคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข ที่มีความยาว 10-500 ตัวอักษร != ('PASS', 'แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว')</msg>
+<status status="FAIL" starttime="20220901 00:51:03.161" endtime="20220901 00:51:03.163"/>
+</kw>
+<msg timestamp="20220901 00:51:03.164" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:51:03.160" endtime="20220901 00:51:03.164"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:03.153" endtime="20220901 00:51:03.165"/>
+</kw>
+<msg timestamp="20220901 00:51:03.166" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:51:03.166" level="INFO">${message_1} = แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว</msg>
+<status status="PASS" starttime="20220901 00:51:03.151" endtime="20220901 00:51:03.166"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:51:03.166" endtime="20220901 00:51:03.167"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:51:03.168" endtime="20220901 00:51:03.171"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:03.176" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:51:03.172" endtime="20220901 00:51:03.176"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:03.177" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:51:03.176" endtime="20220901 00:51:03.178"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:03.182" level="INFO">${message} = แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว</msg>
+<status status="PASS" starttime="20220901 00:51:03.178" endtime="20220901 00:51:03.183"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:03.184" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:51:03.183" endtime="20220901 00:51:03.184"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:03.188" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "กรุณากรอกหัวข้อคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข ที่มีความยาว 10-500 ตัวอักษร"</msg>
+<status status="PASS" starttime="20220901 00:51:03.185" endtime="20220901 00:51:03.188"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:03.188" endtime="20220901 00:51:03.190"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:03.191" endtime="20220901 00:51:03.193"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:03.193" endtime="20220901 00:51:03.195"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:03.196" endtime="20220901 00:51:03.198"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:50.046" endtime="20220901 00:51:03.198"/>
+</iter>
+<iter>
+<var name="${i}">6</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:03.206" level="INFO">${TopQuestion} = </msg>
+<status status="PASS" starttime="20220901 00:51:03.200" endtime="20220901 00:51:03.207"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:03.213" level="INFO">${DetailQuestion} = จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง </msg>
+<status status="PASS" starttime="20220901 00:51:03.208" endtime="20220901 00:51:03.213"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:51:03.215" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:51:03.214" endtime="20220901 00:51:03.786"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:03.214" endtime="20220901 00:51:03.787"/>
+</branch>
+<status status="PASS" starttime="20220901 00:51:03.213" endtime="20220901 00:51:03.787"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:03.790" level="INFO">Typing text '' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:51:03.789" endtime="20220901 00:51:03.953"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:03.954" level="INFO">Typing text 'จะขอยื่นรังวัดทำอย่างไร มีขั้นตอนอะไรบ้าง ' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:51:03.954" endtime="20220901 00:51:04.352"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:04.353" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:51:04.352" endtime="20220901 00:51:04.447"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:51:09.449" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:51:04.447" endtime="20220901 00:51:09.449"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:03.787" endtime="20220901 00:51:09.449"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:51:09.453" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<msg timestamp="20220901 00:51:19.842" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220901 00:51:19.842" level="FAIL">Alert not found in 10 seconds.</msg>
+<status status="FAIL" starttime="20220901 00:51:09.452" endtime="20220901 00:51:19.843"/>
+</kw>
+<msg timestamp="20220901 00:51:19.843" level="INFO">${get_message} = ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="PASS" starttime="20220901 00:51:09.452" endtime="20220901 00:51:19.843"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:51:19.844" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:51:19.845" level="FAIL">กรุณากรอกหัวข้อคำถาม != ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="FAIL" starttime="20220901 00:51:19.844" endtime="20220901 00:51:19.845"/>
+</kw>
+<msg timestamp="20220901 00:51:19.845" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:51:19.844" endtime="20220901 00:51:19.845"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:09.451" endtime="20220901 00:51:19.845"/>
+</kw>
+<msg timestamp="20220901 00:51:19.846" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:51:19.846" level="INFO">${message_1} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:51:09.449" endtime="20220901 00:51:19.846"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:51:19.846" endtime="20220901 00:51:19.846"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:51:19.846" endtime="20220901 00:51:19.848"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:19.849" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:51:19.848" endtime="20220901 00:51:19.849"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:19.850" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:51:19.850" endtime="20220901 00:51:19.850"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:19.851" level="INFO">${message} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:51:19.850" endtime="20220901 00:51:19.851"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:19.852" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:51:19.851" endtime="20220901 00:51:19.852"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:19.853" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "กรุณากรอกหัวข้อคำถาม"</msg>
+<status status="PASS" starttime="20220901 00:51:19.852" endtime="20220901 00:51:19.853"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:19.853" endtime="20220901 00:51:19.853"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:19.853" endtime="20220901 00:51:19.854"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:19.854" endtime="20220901 00:51:19.855"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:19.855" endtime="20220901 00:51:19.855"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:03.198" endtime="20220901 00:51:19.855"/>
+</iter>
+<iter>
+<var name="${i}">7</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:19.860" level="INFO">${TopQuestion} = ขอยื่นรังวัดทำอย่างไร?</msg>
+<status status="PASS" starttime="20220901 00:51:19.856" endtime="20220901 00:51:19.860"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:19.865" level="INFO">${DetailQuestion} = 참조*@#&amp;</msg>
+<status status="PASS" starttime="20220901 00:51:19.861" endtime="20220901 00:51:19.866"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:51:19.868" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:51:19.867" endtime="20220901 00:51:20.233"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:19.867" endtime="20220901 00:51:20.233"/>
+</branch>
+<status status="PASS" starttime="20220901 00:51:19.866" endtime="20220901 00:51:20.234"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:20.238" level="INFO">Typing text 'ขอยื่นรังวัดทำอย่างไร?' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:51:20.236" endtime="20220901 00:51:20.528"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:20.529" level="INFO">Typing text '참조*@#&amp;' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:51:20.528" endtime="20220901 00:51:20.697"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:20.700" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:51:20.698" endtime="20220901 00:51:20.782"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:51:25.785" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:51:20.782" endtime="20220901 00:51:25.785"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:20.234" endtime="20220901 00:51:25.785"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:51:25.789" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<msg timestamp="20220901 00:51:36.216" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220901 00:51:36.216" level="FAIL">Alert not found in 10 seconds.</msg>
+<status status="FAIL" starttime="20220901 00:51:25.789" endtime="20220901 00:51:36.217"/>
+</kw>
+<msg timestamp="20220901 00:51:36.217" level="INFO">${get_message} = ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="PASS" starttime="20220901 00:51:25.788" endtime="20220901 00:51:36.217"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:51:36.218" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:51:36.218" level="FAIL">กรุณากรอกรายละเอียดคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข เท่านั้น != ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="FAIL" starttime="20220901 00:51:36.217" endtime="20220901 00:51:36.218"/>
+</kw>
+<msg timestamp="20220901 00:51:36.218" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:51:36.217" endtime="20220901 00:51:36.218"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:25.787" endtime="20220901 00:51:36.218"/>
+</kw>
+<msg timestamp="20220901 00:51:36.218" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:51:36.218" level="INFO">${message_1} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:51:25.785" endtime="20220901 00:51:36.219"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:51:36.219" endtime="20220901 00:51:36.219"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:51:36.219" endtime="20220901 00:51:36.220"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:36.221" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:51:36.220" endtime="20220901 00:51:36.221"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:36.221" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:51:36.221" endtime="20220901 00:51:36.221"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:36.222" level="INFO">${message} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:51:36.221" endtime="20220901 00:51:36.222"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:36.222" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:51:36.222" endtime="20220901 00:51:36.223"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:36.224" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "กรุณากรอกรายละเอียดคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข เท่านั้น"</msg>
+<status status="PASS" starttime="20220901 00:51:36.223" endtime="20220901 00:51:36.224"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:36.224" endtime="20220901 00:51:36.225"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:36.225" endtime="20220901 00:51:36.226"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:36.226" endtime="20220901 00:51:36.227"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:36.228" endtime="20220901 00:51:36.228"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:19.855" endtime="20220901 00:51:36.228"/>
+</iter>
+<iter>
+<var name="${i}">8</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:36.230" level="INFO">${TopQuestion} = ขอยื่นรังวัดทำอย่างไร?</msg>
+<status status="PASS" starttime="20220901 00:51:36.229" endtime="20220901 00:51:36.230"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:36.232" level="INFO">${DetailQuestion} = ขอยื่นรัง</msg>
+<status status="PASS" starttime="20220901 00:51:36.230" endtime="20220901 00:51:36.232"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:51:36.233" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:51:36.233" endtime="20220901 00:51:36.583"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:36.233" endtime="20220901 00:51:36.583"/>
+</branch>
+<status status="PASS" starttime="20220901 00:51:36.232" endtime="20220901 00:51:36.583"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:36.586" level="INFO">Typing text 'ขอยื่นรังวัดทำอย่างไร?' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:51:36.585" endtime="20220901 00:51:36.870"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:36.872" level="INFO">Typing text 'ขอยื่นรัง' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:51:36.871" endtime="20220901 00:51:37.037"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:37.038" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:51:37.037" endtime="20220901 00:51:37.111"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:51:42.126" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:51:37.112" endtime="20220901 00:51:42.126"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:36.583" endtime="20220901 00:51:42.127"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:51:42.132" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<msg timestamp="20220901 00:51:52.561" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220901 00:51:52.562" level="FAIL">Alert not found in 10 seconds.</msg>
+<status status="FAIL" starttime="20220901 00:51:42.132" endtime="20220901 00:51:52.562"/>
+</kw>
+<msg timestamp="20220901 00:51:52.562" level="INFO">${get_message} = ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="PASS" starttime="20220901 00:51:42.131" endtime="20220901 00:51:52.562"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:51:52.563" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:51:52.564" level="FAIL">กรุณากรอกรายละเอียดคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข ที่มีความยาว 10-1000 ตัวอักษร != ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="FAIL" starttime="20220901 00:51:52.563" endtime="20220901 00:51:52.564"/>
+</kw>
+<msg timestamp="20220901 00:51:52.564" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:51:52.563" endtime="20220901 00:51:52.564"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:42.129" endtime="20220901 00:51:52.564"/>
+</kw>
+<msg timestamp="20220901 00:51:52.564" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:51:52.564" level="INFO">${message_1} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:51:42.127" endtime="20220901 00:51:52.564"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:51:52.565" endtime="20220901 00:51:52.565"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:51:52.566" endtime="20220901 00:51:52.567"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:52.568" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:51:52.567" endtime="20220901 00:51:52.568"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:52.569" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:51:52.568" endtime="20220901 00:51:52.569"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:52.570" level="INFO">${message} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:51:52.569" endtime="20220901 00:51:52.570"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:52.570" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:51:52.570" endtime="20220901 00:51:52.570"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:52.571" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "กรุณากรอกรายละเอียดคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข ที่มีความยาว 10-1000 ตัวอักษร"</msg>
+<status status="PASS" starttime="20220901 00:51:52.570" endtime="20220901 00:51:52.571"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:52.572" endtime="20220901 00:51:52.572"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:52.573" endtime="20220901 00:51:52.573"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:52.573" endtime="20220901 00:51:52.573"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:51:52.574" endtime="20220901 00:51:52.574"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:36.228" endtime="20220901 00:51:52.574"/>
+</iter>
+<iter>
+<var name="${i}">9</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:52.576" level="INFO">${TopQuestion} = ขอยื่นรังวัดทำอย่างไร?</msg>
+<status status="PASS" starttime="20220901 00:51:52.574" endtime="20220901 00:51:52.576"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:51:52.577" level="INFO">${DetailQuestion} = เจ้าของที่ดินผู้มีชื่อในหนังสือแสดงสิทธิ์ในที่ดิน เช่น น.ส.๓ ,น.ส.๓ ก. หรือโฉนดที่ดิน นำหนังสือแสดง-สิทธิ์  ในที่ดินดังกล่าว พร้อมบัตรประชาชนไป ยื่นคำขอรังวัด ณ สำนักงานที่ดินจังหวัด หรือสำนักงานที่ดิ...</msg>
+<status status="PASS" starttime="20220901 00:51:52.576" endtime="20220901 00:51:52.577"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:51:52.578" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:51:52.577" endtime="20220901 00:51:53.034"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:52.577" endtime="20220901 00:51:53.035"/>
+</branch>
+<status status="PASS" starttime="20220901 00:51:52.577" endtime="20220901 00:51:53.035"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:53.041" level="INFO">Typing text 'ขอยื่นรังวัดทำอย่างไร?' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:51:53.039" endtime="20220901 00:51:53.308"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:51:53.309" level="INFO">Typing text 'เจ้าของที่ดินผู้มีชื่อในหนังสือแสดงสิทธิ์ในที่ดิน เช่น น.ส.๓ ,น.ส.๓ ก. หรือโฉนดที่ดิน นำหนังสือแสดง-สิทธิ์  ในที่ดินดังกล่าว พร้อมบัตรประชาชนไป ยื่นคำขอรังวัด ณ สำนักงานที่ดินจังหวัด หรือสำนักงานที่ดินจังหวัดสาขาที่ที่ดินนั้นตั้งอยู่ พนักงานเจ้าหน้าที่จะทำการรับคำขอ และนัดวันรังวัด พร้อมทั้งต้องชำระค่าใช้จ่ายในการรังวัดด้วย ในการยื่นคำขอ ระบุให้ชัดเจนว่าจะทำการรังวัดอะไร อย่างไร เช่น แบ่งแยกกี่แปลง แต่ละแปลงที่แยกออกไปจะเป็นของผู้ใดบ้าง โดยทั้งนี้สามารถตรวจสอบพื้นที่ตั้งสำนักงานที่ดิน ที่รับผิดชอบที่ดินของท่านเบื้องต้นได้จากเว็บไซต์กรมที่ดินเจ้าของที่ดินผู้มีชื่อในหนังสือแสดงสิทธิ์ในที่ดิน เช่น น.ส.๓ ,น.ส.๓ ก. หรือโฉนดที่ดิน นำหนังสือแสดง-สิทธิ์  ในที่ดินดังกล่าว พร้อมบัตรประชาชนไป ยื่นคำขอรังวัด ณ สำนักงานที่ดินจังหวัด หรือสำนักงานที่ดินจังหวัดสาขาที่ที่ดินนั้นตั้งอยู่ พนักงานเจ้าหน้าที่จะทำการรับคำขอ และนัดวันรังวัด พร้อมทั้งต้องชำระค่าใช้จ่ายในการรังวัดด้วย ในการยื่นคำขอ ระบุให้ชัดเจนว่าจะทำการรังวัดอะไร อย่างไร เช่น แบ่งแยกกี่แปลง แต่ละแปลงที่แยกออกไปจะเป็นของผู้ใดบ้าง โดยทั้งนี้สามารถตรวจสอบพื้นที่ตั้งสำนักงานที่ดิน ที่รับผิดชอบที่ดินของท่านเบื้องต้นได้จากเว็บไซต์กรมที่ดิ' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:51:53.308" endtime="20220901 00:52:14.254"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:52:14.257" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:52:14.255" endtime="20220901 00:52:15.625"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:52:20.642" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:52:15.626" endtime="20220901 00:52:20.642"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:53.036" endtime="20220901 00:52:20.642"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:52:20.645" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<status status="PASS" starttime="20220901 00:52:20.645" endtime="20220901 00:52:20.649"/>
+</kw>
+<msg timestamp="20220901 00:52:20.649" level="INFO">${get_message} = ('PASS', 'แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว')</msg>
+<status status="PASS" starttime="20220901 00:52:20.644" endtime="20220901 00:52:20.649"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:52:20.650" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:52:20.650" level="FAIL">กรุณากรอกรายละเอียดคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข ที่มีความยาว 10-1000 ตัวอักษร != ('PASS', 'แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว')</msg>
+<status status="FAIL" starttime="20220901 00:52:20.650" endtime="20220901 00:52:20.650"/>
+</kw>
+<msg timestamp="20220901 00:52:20.651" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:52:20.649" endtime="20220901 00:52:20.651"/>
+</kw>
+<status status="PASS" starttime="20220901 00:52:20.644" endtime="20220901 00:52:20.651"/>
+</kw>
+<msg timestamp="20220901 00:52:20.651" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:52:20.651" level="INFO">${message_1} = แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว</msg>
+<status status="PASS" starttime="20220901 00:52:20.643" endtime="20220901 00:52:20.651"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:52:20.651" endtime="20220901 00:52:20.652"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:52:20.652" endtime="20220901 00:52:20.653"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:20.657" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:52:20.654" endtime="20220901 00:52:20.657"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:20.659" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:52:20.658" endtime="20220901 00:52:20.659"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:20.662" level="INFO">${message} = แก้ไขข้อมูลเสร็จเรียบร้อยแล้ว</msg>
+<status status="PASS" starttime="20220901 00:52:20.660" endtime="20220901 00:52:20.663"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:20.664" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:52:20.663" endtime="20220901 00:52:20.664"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:20.668" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "กรุณากรอกรายละเอียดคำถาม เป็นตัวอักษรภาษาอังกฤษ ภาษาไทย หรือ ตัวเลข ที่มีความยาว 10-1000 ตัวอักษร"</msg>
+<status status="PASS" starttime="20220901 00:52:20.665" endtime="20220901 00:52:20.668"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:52:20.669" endtime="20220901 00:52:20.670"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:52:20.670" endtime="20220901 00:52:20.673"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:52:20.674" endtime="20220901 00:52:20.675"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:52:20.676" endtime="20220901 00:52:20.678"/>
+</kw>
+<status status="PASS" starttime="20220901 00:51:52.574" endtime="20220901 00:52:20.678"/>
+</iter>
+<iter>
+<var name="${i}">10</var>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${TopQuestion}</var>
+<arg>'${eclin.cell(${i},2).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},2).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:20.685" level="INFO">${TopQuestion} = ขอยื่นรังวัดทำอย่างไร?</msg>
+<status status="PASS" starttime="20220901 00:52:20.680" endtime="20220901 00:52:20.685"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${DetailQuestion}</var>
+<arg>'${eclin.cell(${i},3).value}'=='None'</arg>
+<arg>${Empty}</arg>
+<arg>${eclin.cell(${i},3).value}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:20.692" level="INFO">${DetailQuestion} = </msg>
+<status status="PASS" starttime="20220901 00:52:20.685" endtime="20220901 00:52:20.692"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &gt;= 3">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${Questions_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220901 00:52:20.696" level="INFO">Opening url 'http://localhost:8086/TeeDin/editquestions/24'</msg>
+<status status="PASS" starttime="20220901 00:52:20.694" endtime="20220901 00:52:21.139"/>
+</kw>
+<status status="PASS" starttime="20220901 00:52:20.693" endtime="20220901 00:52:21.139"/>
+</branch>
+<status status="PASS" starttime="20220901 00:52:20.692" endtime="20220901 00:52:21.140"/>
+</if>
+<kw name="Add Questions Page">
+<arg>${TopQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_TopQuestion}</arg>
+<arg>${TopQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:52:21.144" level="INFO">Typing text 'ขอยื่นรังวัดทำอย่างไร?' into text field '//textarea[@id='qt_topics']'.</msg>
+<status status="PASS" starttime="20220901 00:52:21.143" endtime="20220901 00:52:21.508"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${EQ_DetailQuestion}</arg>
+<arg>${DetailQuestion}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220901 00:52:21.510" level="INFO">Typing text '' into text field '//textarea[@id='qt_detail']'.</msg>
+<status status="PASS" starttime="20220901 00:52:21.509" endtime="20220901 00:52:21.684"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Cilk_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220901 00:52:21.685" level="INFO">Clicking element '//input[@id='ok']'.</msg>
+<status status="PASS" starttime="20220901 00:52:21.684" endtime="20220901 00:52:21.793"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220901 00:52:26.797" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220901 00:52:21.793" endtime="20220901 00:52:26.797"/>
+</kw>
+<status status="PASS" starttime="20220901 00:52:21.140" endtime="20220901 00:52:26.798"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<var>${Status_1}</var>
+<var>${message_1}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>Check Error page</arg>
+<arg>${eclin.cell(${i},4).value}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Check Error page">
+<arg>${eclin.cell(${i},4).value}</arg>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${get_message}</var>
+<arg>Handle Alert</arg>
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Handle Alert" library="SeleniumLibrary">
+<arg>timeout=10 s</arg>
+<arg>action=ACCEPT</arg>
+<doc>Handles the current alert and returns its message.</doc>
+<msg timestamp="20220901 00:52:26.803" level="INFO">HANDLE::&lt;class 'datetime.timedelta'&gt;::0:00:10</msg>
+<msg timestamp="20220901 00:52:37.181" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220901 00:52:37.182" level="FAIL">Alert not found in 10 seconds.</msg>
+<status status="FAIL" starttime="20220901 00:52:26.802" endtime="20220901 00:52:37.182"/>
+</kw>
+<msg timestamp="20220901 00:52:37.182" level="INFO">${get_message} = ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="PASS" starttime="20220901 00:52:26.801" endtime="20220901 00:52:37.182"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Status}</var>
+<arg>Should Be Equal</arg>
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${ActualResult}</arg>
+<arg>${get_message}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20220901 00:52:37.183" level="INFO">Argument types are:
+&lt;class 'str'&gt;
+&lt;class 'tuple'&gt;</msg>
+<msg timestamp="20220901 00:52:37.183" level="FAIL">กรุณากรอกรายละเอียดคำถาม != ('FAIL', 'Alert not found in 10 seconds.')</msg>
+<status status="FAIL" starttime="20220901 00:52:37.183" endtime="20220901 00:52:37.183"/>
+</kw>
+<msg timestamp="20220901 00:52:37.183" level="INFO">${Status} = False</msg>
+<status status="PASS" starttime="20220901 00:52:37.182" endtime="20220901 00:52:37.183"/>
+</kw>
+<status status="PASS" starttime="20220901 00:52:26.800" endtime="20220901 00:52:37.184"/>
+</kw>
+<msg timestamp="20220901 00:52:37.184" level="INFO">${Status_1} = False</msg>
+<msg timestamp="20220901 00:52:37.184" level="INFO">${message_1} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:52:26.798" endtime="20220901 00:52:37.184"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Status_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:52:37.184" endtime="20220901 00:52:37.184"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${message_1}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220901 00:52:37.185" endtime="20220901 00:52:37.185"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status_Actual}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${Status_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:37.186" level="INFO">${Status_Actual} = False</msg>
+<status status="PASS" starttime="20220901 00:52:37.185" endtime="20220901 00:52:37.186"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Status}</var>
+<arg>'${Status_Actual}' == 'True'</arg>
+<arg>Pass</arg>
+<arg>Fail</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:37.187" level="INFO">${Status} = Fail</msg>
+<status status="PASS" starttime="20220901 00:52:37.187" endtime="20220901 00:52:37.187"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${message}</var>
+<arg>${i}&lt;=${eclin.max_row}</arg>
+<arg>${message_1}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:37.188" level="INFO">${message} = Alert not found in 10 seconds.</msg>
+<status status="PASS" starttime="20220901 00:52:37.187" endtime="20220901 00:52:37.188"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Error}</var>
+<arg>'${Status}' == 'Pass'</arg>
+<arg>No Error</arg>
+<arg>Not Found Alert</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:37.189" level="INFO">${Error} = Not Found Alert</msg>
+<status status="PASS" starttime="20220901 00:52:37.188" endtime="20220901 00:52:37.189"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${Suggestion}</var>
+<arg>'${Error}' == 'Not Found Alert'</arg>
+<arg>ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"</arg>
+<arg>-</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20220901 00:52:37.190" level="INFO">${Suggestion} = ควรมีการแจ้งเตือนให้ผู้ใช้งาน "กรุณากรอกรายละเอียดคำถาม"</msg>
+<status status="PASS" starttime="20220901 00:52:37.189" endtime="20220901 00:52:37.190"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>5</arg>
+<arg>value=${message}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:52:37.190" endtime="20220901 00:52:37.191"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>6</arg>
+<arg>value=${Status}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:52:37.191" endtime="20220901 00:52:37.191"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>7</arg>
+<arg>value=${Error}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:52:37.191" endtime="20220901 00:52:37.191"/>
+</kw>
+<kw name="Write Excel Cell" library="ExcelLibrary">
+<arg>${i}</arg>
+<arg>8</arg>
+<arg>value=${Suggestion}</arg>
+<arg>sheet_name=TestData</arg>
+<doc>Writes value to the cell.</doc>
+<status status="PASS" starttime="20220901 00:52:37.192" endtime="20220901 00:52:37.192"/>
+</kw>
+<status status="PASS" starttime="20220901 00:52:20.678" endtime="20220901 00:52:37.192"/>
+</iter>
+<status status="PASS" starttime="20220901 00:50:09.364" endtime="20220901 00:52:37.192"/>
+</for>
+<kw name="Save Excel Document" library="ExcelLibrary">
+<arg>Result/WriteExcel/TC06_Edit_Questions_result.xlsx</arg>
+<doc>Saves the current document to disk.</doc>
+<status status="PASS" starttime="20220901 00:52:37.192" endtime="20220901 00:52:37.218"/>
+</kw>
+<kw name="Close All Excel Documents" library="ExcelLibrary">
+<doc>Closes all opened documents.</doc>
+<status status="PASS" starttime="20220901 00:52:37.218" endtime="20220901 00:52:37.219"/>
+</kw>
+<kw name="CloseWebBrowser" library="RS_Login">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220901 00:52:37.219" endtime="20220901 00:52:39.632"/>
+</kw>
+<status status="PASS" starttime="20220901 00:52:37.219" endtime="20220901 00:52:39.632"/>
+</kw>
+<status status="PASS" starttime="20220901 00:50:02.304" endtime="20220901 00:52:39.633"/>
+</test>
+<status status="PASS" starttime="20220901 00:50:00.193" endtime="20220901 00:52:39.635"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC06 Edit Questions">TC06 Edit Questions</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
