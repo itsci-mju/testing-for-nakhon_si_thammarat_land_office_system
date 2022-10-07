@@ -6,6 +6,7 @@ ${AddOfficer_Url}         http://localhost:8086/TeeDin/addofficer
 ${firstname}            //input[@id='firstname']
 ${lastname}             //input[@id='lastname']
 ${idcard}              //input[@id='idcard']
+${position}            //select[@id='of_position']
 ${office_name}         //select[@id='office_id']
 ${username}             //input[@id='username']
 ${password}             //input[@id='password']

@@ -2,33 +2,36 @@
 Library        SeleniumLibrary
 Library        ExcelLibrary
 Library	        Collections
-Library          DebugLibrary
+Library        ScreenCapLibrary
 Resource    ../Resources/RS_Edit_Questions.robot
 Resource    ../Resources/RS_Login.robot
 
 *** Test Cases ***
 TC06_Edit_Questions
     Customer Login
+     Start Video Recording   alias=None  name=TC06_Edit_Questions  fps=None    size_percentage=1   embed=True  embed_width=100px   monitor=1
     Open Excel Document     TestData//TC06_Edit_Questions.xlsx     doc_id=TestData
     ${eclin}    Get Sheet   TestData
-    #Debug
      FOR    ${i}    IN RANGE   2    ${eclin.max_row+1}
+            ${tcid}     Set Variable if    '${eclin.cell(${i},1).value}'=='None'    ${Empty}     ${eclin.cell(${i},1).value}
+             Set Suite Variable  ${testcaseData}  ${tcid}
              ${TopQuestion}     Set Variable if    '${eclin.cell(${i},2).value}'=='None'    ${Empty}     ${eclin.cell(${i},2).value}
              ${DetailQuestion}     Set Variable if    '${eclin.cell(${i},3).value}'=='None'    ${Empty}     ${eclin.cell(${i},3).value}
                 IF     ${i} >= 3
                     Go To     ${Questions_URL}
-                 END
+                END
              Add Questions Page      ${TopQuestion}    ${DetailQuestion}
-             ${Status_1}   ${message_1}  Run Keyword If    ${i}<=${eclin.max_row}   Check Error page     ${eclin.cell(${i},4).value}
-             Log To Console    ${Status_1}
-             Log To Console    ${message_1}
+             ${Status_1}   ${message_1}  Run Keyword If    ${i}<=${eclin.max_row}    Check Error page     ${eclin.cell(${i},4).value}
 
              ${Status_Actual}       Set Variable if    ${i}<=${eclin.max_row}   ${Status_1}
-             ${Status}       Set Variable if    '${Status_Actual}' == 'True'      Pass            Fail
-             ${message}       Set Variable if    ${i}<=${eclin.max_row}   ${message_1}
+             ${Status}       Set Variable if    '${Status_Actual}' == 'True'      PASS            FAIL
+             Run Keyword If     '${Status}' == 'FAIL'    Capture Page Screenshot    ${EXECDIR}/Result/TC06_Edit_Questions/Screenshot/${testcaseData}.png
 
-             ${Error}       Set Variable if    '${Status}' == 'Pass'      No Error          Not Found Alert
-             ${Suggestion}       Set Variable if    '${Error}' == 'Not Found Alert'      ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"     -
+             ${get_message}       Set Variable if    ${i}<=${eclin.max_row}   ${message_1}
+             ${message}           Set Variable if    '${message_1}' == '${text_not_alert}'     ${Empty}        ${message_1}
+
+             ${Error}       Set Variable if    '${Status}' == 'FAIL'      Error         No Error
+             ${Suggestion}       Set Variable if    '${message}' == 'None' or '${Status}' == 'FAIL'      ควรมีการแจ้งเตือนให้ผู้ใช้งาน "${eclin.cell(${i},4).value}"     -
 
 
              Write Excel Cell        ${i}    5       value=${message}        sheet_name=TestData
@@ -40,6 +43,7 @@ TC06_Edit_Questions
     Save Excel Document       Result/WriteExcel/TC06_Edit_Questions_result.xlsx
     Close All Excel Documents
     CloseWebBrowser
+    Stop Video Recording      alias=None
 
 *** Keywords ***
 Customer Login
@@ -61,7 +65,49 @@ Add Questions Page
     Sleep  5s
 
 Check Error page
-    [Arguments]     ${ActualResult}
-    ${get_message}   Run keyword and ignore error    Handle Alert       timeout=10 s     action=ACCEPT
-    ${Status}  Run Keyword And Return Status    Should Be Equal     ${ActualResult}     ${get_message}[1]
-    [Return]   ${Status}  ${get_message}[1]
+    [Arguments]     ${Actual_Result}
+        Log To Console  ${testcaseData}
+
+        IF  "${testcaseData}" == "TD003"
+            ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${message_ques_1}
+                IF  '${checkVisible}' == 'True'
+                ${message}  Get Text  ${message_ques_1}
+                END
+        ELSE IF  "${testcaseData}" == "TD004"
+            ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${message_ques_1}
+                IF  '${checkVisible}' == 'True'
+                ${message}  Get Text  ${message_ques_1}
+                END
+        ELSE IF  "${testcaseData}" == "TD010"
+            ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${message_ques}
+                IF  '${checkVisible}' == 'True'
+                ${message}  Get Text  ${message_ques}
+                END
+        ELSE IF  "${testcaseData}" == "TD013"
+            ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${message_detail_1}
+                IF  '${checkVisible}' == 'True'
+                ${message}  Get Text  ${message_detail_1}
+                END
+        ELSE IF  "${testcaseData}" == "TD014"
+            ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${message_detail_1}
+                IF  '${checkVisible}' == 'True'
+                ${message}  Get Text  ${message_detail_1}
+                END
+        ELSE IF  "${testcaseData}" == "TD020"
+            ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${message_detail}
+                IF  '${checkVisible}' == 'True'
+                ${message}  Get Text  ${message_detail}
+                END
+        ELSE
+            ${get_message}   Run keyword and ignore error    Handle Alert    timeout=5s
+            ${message}     Convert To String   ${get_message}[1]
+        END
+
+    # "---------------------------------------------------"
+        IF  '${Actual_Result.strip()}' == '${message.strip()}'
+            Set Suite Variable  ${Status}  True
+        ELSE
+            Set Suite Variable  ${Status}  False
+        END
+
+      [Return]   ${Status}  ${message}

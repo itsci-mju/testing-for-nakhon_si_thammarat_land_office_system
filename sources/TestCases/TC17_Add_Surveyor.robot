@@ -2,7 +2,6 @@
 Library        SeleniumLibrary
 Library        ExcelLibrary
 Library	        Collections
-Library         DebugLibrary
 Library          ScreenCapLibrary
 Resource    ../Resources/RS_Add_Surveyor.robot
 Resource    ../Resources/RS_Login.robot
@@ -13,7 +12,6 @@ TC17_Add_Surveyor
     Start Video Recording   alias=None  name=TC17_Add_Surveyor  fps=None    size_percentage=1   embed=True  embed_width=100px   monitor=1
     Open Excel Document     TestData//TC17_Add_Surveyor.xlsx     doc_id=TestData
     ${eclin}    Get Sheet   TestData
-    #Debug
      FOR    ${i}    IN RANGE   2    ${eclin.max_row+1}
             ${tcid}     Set Variable if    '${eclin.cell(${i},1).value}'=='None'    ${Empty}     ${eclin.cell(${i},1).value}
              Set Suite Variable  ${testcaseData}  ${tcid}
@@ -112,12 +110,7 @@ Check Error page
                     IF  '${checkVisible}' == 'True'
                         ${message}  Get Text  ${lastname_alert_1}
                     END
-         ELSE IF    "${testcaseData}" == "TD022"
-              ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${idcard_alert_2}
-                    IF  '${checkVisible}' == 'True'
-                        ${message}  Get Text  ${idcard_alert_2}
-                    END
-         ELSE IF    "${testcaseData}" == "TD024"
+         ELSE IF    "${testcaseData}" == "TD023"
               ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${idcard_alert_2}
                     IF  '${checkVisible}' == 'True'
                         ${message}  Get Text  ${idcard_alert_2}
@@ -127,20 +120,20 @@ Check Error page
                     IF  '${checkVisible}' == 'True'
                         ${message}  Get Text  ${idcard_alert_2}
                     END
-         ELSE IF    "${testcaseData}" == "TD027"
+         ELSE IF    "${testcaseData}" == "TD026"
+              ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${idcard_alert_2}
+                    IF  '${checkVisible}' == 'True'
+                        ${message}  Get Text  ${idcard_alert_2}
+                    END
+         ELSE IF    "${testcaseData}" == "TD028"
               ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${idcard_alert_1}
                     IF  '${checkVisible}' == 'True'
                         ${message}  Get Text  ${idcard_alert_1}
                     END
-         ELSE IF    "${testcaseData}" == "TD032"
+         ELSE IF    "${testcaseData}" == "TD033"
               ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${phone_alert_1}
                     IF  '${checkVisible}' == 'True'
                         ${message}  Get Text  ${phone_alert_1}
-                    END
-         ELSE IF    "${testcaseData}" == "TD034"
-              ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${phone_alert_2}
-                    IF  '${checkVisible}' == 'True'
-                        ${message}  Get Text  ${phone_alert_2}
                     END
          ELSE IF    "${testcaseData}" == "TD035"
               ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${phone_alert_2}
@@ -148,6 +141,11 @@ Check Error page
                         ${message}  Get Text  ${phone_alert_2}
                     END
          ELSE IF    "${testcaseData}" == "TD036"
+              ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${phone_alert_2}
+                    IF  '${checkVisible}' == 'True'
+                        ${message}  Get Text  ${phone_alert_2}
+                    END
+         ELSE IF    "${testcaseData}" == "TD037"
               ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${phone_alert_1}
                     IF  '${checkVisible}' == 'True'
                         ${message}  Get Text  ${phone_alert_1}

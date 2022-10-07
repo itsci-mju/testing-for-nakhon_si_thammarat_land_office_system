@@ -13,7 +13,6 @@ TC05_Add_Questions
     Start Video Recording   alias=None  name=TC05_Add_Questions  fps=None    size_percentage=1   embed=True  embed_width=100px   monitor=1
     Open Excel Document     TestData//TC05_Add_Questions.xlsx     doc_id=TestData
     ${eclin}    Get Sheet   TestData
-    #Debug
      FOR    ${i}    IN RANGE   2    ${eclin.max_row+1}
             ${tcid}     Set Variable if    '${eclin.cell(${i},1).value}'=='None'    ${Empty}     ${eclin.cell(${i},1).value}
              Set Suite Variable  ${testcaseData}  ${tcid}

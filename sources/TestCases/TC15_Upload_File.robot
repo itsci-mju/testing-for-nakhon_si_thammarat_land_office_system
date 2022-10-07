@@ -116,7 +116,10 @@ Check Error page
          ELSE IF    "${testcaseData}" == "TD016"
                ${message}     Convert To String    ${message_image2}
                Run keyword and ignore error  Alert Should Be Present    action=ACCEPT
-         ELSE IF    "${testcaseData}" == "TD018"
+         ELSE IF    "${testcaseData}" == "TD017"
+               ${message}     Convert To String    ${message_image2}
+               Run keyword and ignore error  Alert Should Be Present    action=ACCEPT
+         ELSE IF    "${testcaseData}" == "TD019"
                ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${file_alert_1}
                     IF  '${checkVisible}' == 'True'
                         ${message}  Get Text  ${file_alert_1}
