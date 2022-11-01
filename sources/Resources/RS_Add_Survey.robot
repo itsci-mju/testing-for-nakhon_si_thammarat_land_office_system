@@ -6,6 +6,7 @@ ${AddSurvey_URL}          http://localhost:8086/TeeDin/addsurvey?survey_land=%E0
 ${AddSurvey}              //div[contains(text(),'รังวัดออกโฉนดที่ดินเฉพาะราย')]
 ${number}                 //input[@id='survey_number']
 ${number_status}          //select[@id='survey_status']
+${surveyor_sur}           //select[@id='surveyor_id']
 ${fritname_sur}           //input[@id='survey_firstname']
 ${lastname_sur}           //input[@id='survey_lastname']
 ${cilk_button}            //input[@id='ok']
