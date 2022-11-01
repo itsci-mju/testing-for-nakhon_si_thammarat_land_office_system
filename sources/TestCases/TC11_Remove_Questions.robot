@@ -17,14 +17,19 @@ TC11_Remove_Question
             ${tcid}     Set Variable if    '${eclin.cell(${i},1).value}'=='None'    ${Empty}     ${eclin.cell(${i},1).value}
              Set Suite Variable  ${testcaseData}  ${tcid}
 
-             Remove Question Page
+             IF     ${i} == 2
+                 Remove Question Page
+             ELSE
+                Cancel Question
+             END
+
              ${Status_1}   ${message_1}  Run Keyword If    ${i}<=${eclin.max_row}    Check Error page     ${eclin.cell(${i},3).value}
 
              ${Status_Actual}       Set Variable if    ${i}<=${eclin.max_row}   ${Status_1}
              ${Status}       Set Variable if    '${Status_Actual}' == 'True'      PASS            FAIL
 
              #Run keyword and ignore error    Handle Alert   timeout=10s
-             Run Keyword If     '${Status}' == 'FAIL'    Capture Page Screenshot    ${EXECDIR}/Result/TC11_Remove_Question/Screenshot/${testcaseData}.png
+             Run Keyword If     '${Status}' == 'FAIL'    Capture Page Screenshot    ${EXECDIR}/Result/TC11_Remove_Questions/Screenshot/${testcaseData}.png
 
 
              ${get_message}       Set Variable if    ${i}<=${eclin.max_row}   ${message_1}
@@ -67,11 +72,18 @@ Remove Question Page
     Log To Console   ${get_Alert1}
     Set Suite Variable  ${message_remove}  ${get_Alert1}
 
+Cancel Question
+    Click element   ${Cilk_Remove}
+    Run keyword and ignore error  Handle Alert  action=DISMISS
+
+
 Check Error page
     [Arguments]     ${Actual_Result}
          Log To Console  ${testcaseData}
          IF  "${testcaseData}" == "TD001"
               ${message}     Convert To String    ${message_remove}
+         ELSE IF  "${testcaseData}" == "TD002"
+              ${message}    Check Page   ${Page_Remove}
          END
 
         IF  '${Actual_Result.strip()}' == '${message.strip()}'
@@ -83,3 +95,9 @@ Check Error page
         Log To Console      ${message}
         Log To Console      ${Status}
       [Return]   ${Status}  ${message}
+
+Check Page
+    [Arguments]  ${locator}
+    ${Status}   Run Keyword And Return Status   Wait Until Element Is Visible    ${locator}     30s
+    ${Result}  Set Variable if    '${Status}'=='True'      คำถามไม่ถูกลบ      ไม่ได้อยู่หน้ารายการตอบคำถาม
+    [Return]     ${Result}

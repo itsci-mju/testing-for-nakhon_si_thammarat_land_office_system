@@ -76,16 +76,13 @@ Check Error page
         Log To Console  ${testcaseData}
         IF  "${testcaseData}" == "TD001"
             ${message}  Check Page Search   ${text_page_search}
-        ELSE IF     "${testcaseData}" == "TD002"
+        ELSE IF     "${testcaseData}" == "TD004"
             ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${text_message}
                 IF  '${checkVisible}' == 'True'
                 ${message}  Get Text  ${text_message}
                 END
-        ELSE IF     "${testcaseData}" == "TD003"
-            ${checkVisible}  Run Keyword And Return Status  Page Should Contain Element  ${text_message}
-                IF  '${checkVisible}' == 'True'
-                ${message}  Get Text  ${text_message}
-                END
+        ELSE IF  "${testcaseData}" == "TD003"
+            ${message}  Check Page Search   ${text_page_search}
         ELSE
             ${get_message}   Run keyword and ignore error    Handle Alert    timeout=5s
             ${message}     Convert To String   ${get_message}[1]

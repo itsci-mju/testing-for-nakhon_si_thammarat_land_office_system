@@ -79,7 +79,7 @@ Check Error page
     [Arguments]     ${Actual_Result}
         Log To Console  ${testcaseData}
     # "---------------------------------------------------"
-    IF  "${testcaseData}" == "TD001"  #"${testcaseData}" == "TD020"
+    IF  "${testcaseData}" == "TD001"
         ${message}  check text page
     ELSE IF  "${testcaseData}" == "TD002"
         ${message}  check text page
@@ -99,13 +99,9 @@ Check Error page
          ${message}  check page message
     ELSE IF  "${testcaseData}" == "TD015"
          ${message}  check text page
-     ELSE IF  "${testcaseData}" == "TD016"
-         ${message}  check page message
     ELSE IF  "${testcaseData}" == "TD018"
          ${message}  check text page
     ELSE IF  "${testcaseData}" == "TD019"
-         ${message}  check page message
-    ELSE IF  "${testcaseData}" == "TD021"
          ${message}  check page message
     ELSE IF  "${testcaseData}" == "TD008"
          ${message}  check text page
@@ -119,6 +115,8 @@ Check Error page
          ${message}  check text page
     ELSE IF  "${testcaseData}" == "TD020"
          ${message}  check page message
+    ELSE IF  "${testcaseData}" == "TD021"
+         ${message}  check text page
     ELSE
          ${message}  get text alert
     END

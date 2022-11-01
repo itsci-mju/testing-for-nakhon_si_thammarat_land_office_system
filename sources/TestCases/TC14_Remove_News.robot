@@ -17,7 +17,12 @@ TC14_Remove_News
             ${tcid}     Set Variable if    '${eclin.cell(${i},1).value}'=='None'    ${Empty}     ${eclin.cell(${i},1).value}
              Set Suite Variable  ${testcaseData}  ${tcid}
 
-             Remove News Page
+              IF     ${i} == 2
+                 Remove News Page
+             ELSE
+                Cancel News
+             END
+
              ${Status_1}   ${message_1}  Run Keyword If    ${i}<=${eclin.max_row}    Check Error page     ${eclin.cell(${i},3).value}
 
              ${Status_Actual}       Set Variable if    ${i}<=${eclin.max_row}   ${Status_1}
@@ -67,12 +72,17 @@ Remove News Page
     Log To Console   ${get_Alert1}
     Set Suite Variable  ${message_remove}  ${get_Alert1}
 
+Cancel News
+    Click element   ${Cilk_Remove}
+    Run keyword and ignore error  Handle Alert  action=DISMISS
 
 Check Error page
     [Arguments]     ${Actual_Result}
          Log To Console  ${testcaseData}
          IF  "${testcaseData}" == "TD001"
               ${message}     Convert To String    ${message_remove}
+         ELSE IF  "${testcaseData}" == "TD002"
+              ${message}    Check Page   ${Page_Remove}
          END
 
         IF  '${Actual_Result.strip()}' == '${message.strip()}'
@@ -84,3 +94,9 @@ Check Error page
         Log To Console      ${message}
         Log To Console      ${Status}
       [Return]   ${Status}  ${message}
+
+Check Page
+    [Arguments]  ${locator}
+    ${Status}   Run Keyword And Return Status   Wait Until Element Is Visible    ${locator}     30s
+    ${Result}  Set Variable if    '${Status}'=='True'      ประกาศข่าวไม่ถูกลบ      ไม่ได้อยู่หน้ารายการข่าวประกาศ
+    [Return]     ${Result}

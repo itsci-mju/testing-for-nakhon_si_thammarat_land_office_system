@@ -84,7 +84,6 @@ Upload File Page
     ${get_Alert2}   Convert To String   ${Alert2}[1]
     Log To Console   ${get_Alert2}
     Set Suite Variable  ${message_image2}  ${get_Alert2}
-
     Click element   ${Cilck_Button}
 
 Check Error page

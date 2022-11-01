@@ -71,7 +71,8 @@ Register Page
     Input Text      ${RE_Idcard}        ${Idcard}
     Run keyword If   '${PROFILE}'!='${Empty}'    Choose File        id=m_image       ${PROFILE}
     IF  "${testcase}" == "TD069"
-        ${get_message}   Run keyword and ignore error    Handle Alert    timeout=10s
+        ${get_message}   Run keyword and ignore error    Handle Alert    LEAVE
+        Run keyword and ignore error    Handle Alert
         ${message}     Convert To String    ${get_message}[1]
         Set Suite Variable  ${add_img}  ${message}
     END
@@ -84,7 +85,8 @@ Check Error page
          IF  "${testcase}" == "TD069"
             ${message}     Convert To String    ${add_img}
          ELSE
-            ${get_message}   Run keyword and ignore error    Handle Alert    timeout=10s
+            ${get_message}   Run keyword and ignore error    Handle Alert    LEAVE
+            Run keyword and ignore error    Handle Alert
             ${message}     Convert To String   ${get_message}[1]
          END
 
